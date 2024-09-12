@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# electronic-data-capture-tutorial
-=======
+
 # Electroinc Data Capture Tutorial
 
 ## Overview
@@ -37,4 +35,3 @@ Ensure you have a Dockerfile in the root directory and run:
 **mainzelliste Service**: Open your browser and navigate to http://localhost:8080. You should see the homepage displaying: "This is Mainzelliste running version 1.13-SNAPSHOT-6a9d42ad59 for Mainzelliste."
 
 **edc-tutorial Service**: Open your browser and go to http://localhost:3000 to access the EDC tutorial.
->>>>>>> dfb98a2 (Initial commit: Added electronic data capture tutorial service)
