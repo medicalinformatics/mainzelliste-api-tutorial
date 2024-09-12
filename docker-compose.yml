@@ -1,0 +1,43 @@
+### This compose file is the basic configuration for running mainzelliste inside a container.
+### We also supply configuration examples at docker-compose.user.yml and docker-compose.dev.yml.
+### More information is available at docker.md
+version: "3.1"
+services:
+  mainzelliste:
+    image: medicalinformatics/mainzelliste:develop
+    ports:
+      - 8080:8080
+    environment:
+      ML_DB_NAME: ${ML_DB_NAME:-mainzelliste}
+      ML_DB_USER: ${ML_DB_USER:-mainzelliste}
+      ML_DB_PASS: ${ML_DB_PASS:-pleaseChangeMe}
+      ML_API_KEY: ${ML_API_KEY:-pleaseChangeMeToo}
+      ML_ALLOWEDREMOTEADDRESSES: ${ML_ALLOWEDREMOTEADDRESSES:-0.0.0.0/0}
+    depends_on:
+      - db
+  db:
+    # Upgrading postgres minor version e.g. from 10.1.0 to 10.1.5 do not require a dump or using
+    # pg_update. For major version upgrade please execute the following steps :
+    # 1. make a backup of the db. So make sure, that the old DB service is running, then run this command
+    #      docker-compose exec {db_service_name} pg_dumpall -U {postgres_user} > dump.sql
+    # 2. make some changes to your docker-compose.override.yml file :
+    #    2.1 update the postgres version. Just change the tag to the latest images e.g. 15-alpine
+    #    2.2 add the following environment variables POSTGRES_HOST_AUTH_METHOD=md5 and  POSTGRES_INITDB_ARGS=--auth-host=md5
+    #        only if your previously used password-based authentications method is md5, and you are
+    #        upgrading the DB from a version prior to 14.x to a new version greater than or equal to 14.x
+    #    2.4 use a new DB-volume e.g  "mainzellisteDB-15:/var/lib/postgresql/data" and keep the old volume as backup in case something goes wrong.
+    # 3. run db docker compose service and init an empty DB. `docker-compose up db`
+    # 4. now run the import command
+    #       cat dump.sql | docker exec -i {mainzelliste_db-container_name or id} psql -U {postgres_user} -d {postgres_database}
+    image: postgres:15-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=${ML_DB_NAME:-mainzelliste}
+      - POSTGRES_USER=${ML_DB_USER:-mainzelliste}
+      - POSTGRES_PASSWORD=${ML_DB_PASS:-pleaseChangeMe}
+  edc_tutorial:
+    restart: unless-stopped
+    image: edc-tutorial
+    ports:
+      - 3000:3000

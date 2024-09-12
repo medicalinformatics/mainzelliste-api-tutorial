@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Data Capture</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Electronic Data Capture System</h1>
+        <p>Fill in the patient's medical details for pseudonymization</p>
+        
+        <!-- Form to capture patient data -->
+        <form action="/startSession" method="POST">
+            <!-- Patient ID Field -->
+            <div class="input-group">
+                <label for="patientId">Patient ID*</label>
+                <input type="text" name="patientId" value="<%= patientId ? patientId : '' %>" placeholder="Generated Automatically" readonly>
+            </div>
+
+            <!-- Smoking History Field -->
+            <div class="input-group">
+                <label for="smokingHistory">Smoking History</label>
+                <select name="smokingHistory" id="smokingHistory">
+                    <option value="never">Never Smoked</option>
+                    <option value="former">Former Smoker</option>
+                    <option value="current">Current Smoker</option>
+                </select>
+            </div>
+
+            <!-- Drinking History Field -->
+            <div class="input-group">
+                <label for="drinkingHistory">Drinking History</label>
+                <select name="drinkingHistory" id="drinkingHistory">
+                    <option value="never">Never Drinks</option>
+                    <option value="social">Social Drinker</option>
+                    <option value="frequent">Frequent Drinker</option>
+                </select>
+            </div>
+
+            <!-- Height -->
+            <div class="input-group">
+                <label for="height">Height (cm)*</label>
+                <input type="number" name="height" id="height" placeholder="Enter height in cm" required>
+            </div>
+
+            <!-- Weight -->
+            <div class="input-group">
+                <label for="weight">Weight (kg)*</label>
+                <input type="number" name="weight" id="weight" placeholder="Enter weight in kg" required>
+            </div>
+
+            <!-- BMI Calculation -->
+            <div class="input-group">
+                <label for="bmi">Body Mass Index (BMI)</label>
+                <input type="text" type="number" name="bmi" id="bmi">
+            </div>
+
+            <!-- Additional Medical Information -->
+            <div class="input-group">
+                <label for="medicalConditions">Medical Conditions</label>
+                <textarea name="medicalConditions" id="medicalConditions" placeholder="Enter relevant medical conditions (e.g., hypertension, diabetes)"></textarea>
+            </div>
+
+            <!-- Button to create pseudonym -->
+            <div class="input-group">
+                <button type="submit">Create Pseudonym</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
