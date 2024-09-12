@@ -1,4 +1,3 @@
-
 # Electroinc Data Capture Tutorial
 
 ## Overview
@@ -14,9 +13,9 @@ To get started with this project, you'll need to have Docker and Docker Compose 
 1. **Clone the repository:**
 
         
-        git clone https://github.com/your-username/your-repository.git
+        git clone https://github.com/MuhannadBaraghith/electronic-data-capture-tutorial.git
 
-    cd your-repository
+    cd electronic-data-capture-tutorial
 
 
 2. **Create the Image for edc-tutorial**
