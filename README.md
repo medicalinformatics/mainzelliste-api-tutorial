@@ -10,18 +10,15 @@ To get started with this project, you'll need to have Docker and Docker Compose 
 
 ## Running the Services
 
-1. **Clone the repository:**
-
+1. **Clone the Repository:**
         
         git clone https://github.com/MuhannadBaraghith/electronic-data-capture-tutorial.git
 
-    cd electronic-data-capture-tutorial
-
+    cd  electronic-data-capture-tutorial
 
 2. **Create the Image for edc-tutorial**
 
 Ensure you have a Dockerfile in the root directory and run:
-
 
         docker build -f Dockerfile -t edc-tutorial .
 
@@ -29,8 +26,8 @@ Ensure you have a Dockerfile in the root directory and run:
 
         Docker compose up
 
-4. **Viewing the services**
+4. **Viewing the Services**
 
-**mainzelliste Service**: Open your browser and navigate to http://localhost:8080. You should see the homepage displaying: "This is Mainzelliste running version 1.13-SNAPSHOT-6a9d42ad59 for Mainzelliste."
+**mainzelliste service**: Open your browser and navigate to http://localhost:8080. You should see the homepage displaying: "This is Mainzelliste running version 1.13-SNAPSHOT-6a9d42ad59 for Mainzelliste."
 
-**edc-tutorial Service**: Open your browser and go to http://localhost:3000 to access the EDC tutorial.
+**edc-tutorial service**: Open your browser and go to http://localhost:3000 to access the EDC tutorial.
