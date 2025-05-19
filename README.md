@@ -1,4 +1,4 @@
-# Electroinc Data Capture Tutorial
+# Electronic Data Capture Tutorial
 
 ## Overview
 
